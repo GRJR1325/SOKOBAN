@@ -1,2 +1,2 @@
 # SOKOBAN
-Proyecto: Creación del juego Sokoba
+Proyecto: Creación del juego Sokoban
