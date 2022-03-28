@@ -1,1 +1,112 @@
-print("hola")
+
+class Sokoban:
+ # Representación del componenente del juego
+ # 0 = Muñeco
+ # 1 = Espacio
+ # 2 = Cajas
+ # 3 = Paredes
+ # 4 = Metas
+ # 5 = Muñeco_meta
+ # 6 = Caja_meta
+    
+ # Controles 
+ # a = Izquierda
+ # d = Derecha
+ # w = Arriba
+ # s = Abajo
+
+    mapa = [3,1,1,1,0,1,1,1,1,1,1,3] 
+    posicion_x = 4 #Posicion Inicial
+
+    def __init__(self):
+        pass
+
+    def imprimirMapa(self):
+        for i in self.mapa:
+            if i == 1:
+                print(" ", end = "")
+            elif i == 3: 
+                print (chr(220),end = "")
+            elif i == 0:
+                print (chr(254),end = "")
+            else:
+                print(i, end = "")
+        print()
+         
+    def moverDerecha(self):
+        self.posicion_x += 1 #Calcula la nueva posicion del muñeco 
+        self.mapa[self.posicion_x] = 0 #Coloca el muñeco en la nueva posicion 
+        self.mapa[self.posicion_x - 1] = 1 #Coloca el espacio donde va el muñeco
+
+        #Condiciones
+        
+        # 0 Muñeco, espacio
+        self.mapa[self.posicion_fila] [self.posicion_columna]=1
+        self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
+        self.posicion.columna += 1
+
+        #1 Muñeco, meta
+        self.mapa[self.posicion_fila] [self.posicion_columna]=1
+        self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
+        self.posicion.columna += 1
+
+
+
+        
+
+    def moverIzquierda(self):
+        self.posicion_x -= 1
+        self.mapa[self.posicion_x] = 0 
+        self.mapa[self.posicion_x + 1] = 1
+
+juego = Sokoban()
+
+juego.imprimirMapa()
+
+while True:
+    instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
+    print(instrucciones)
+    movimientos = input("mover a: ")
+    if movimientos == "d": 
+        juego.moverDerecha()
+        juego.imprimirMapa()
+    elif movimientos == "a":
+        juego.moverIzquierda()
+        juego.imprimirMapa()
+    elif movimientos == "q":
+        print("Game Over")
+        break
+        
+        
+        
+
+#2 Muñeco, caja ,espacio
+        self.mapa[self.posicion_fila] [self.posicion_columna]=1
+        self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
+        self.posicion.columna += 1
+
+
+
+
+#3 Muneco,caja,meta
+if self.mapa[self.posicion_x]==0 and self.mapa[self.posicion_x+1]==2 and self.mapa[self.posicion_x+2]==4:
+    self.mapa[self.posicion_x]=1
+    self.mapa[self.posicion_x+1]=0
+    self.mapa[self.posicion_x+2]=6
+    self.posicion_x += 1
+
+#6 Muñeco meta, caja, espacio
+if self.mapa[self.posicion_x]==5 and self.mapa[self.posicion_x+1]==2 and self.mapa[self.posicion_x+2]==1:
+    self.mapa[self.posicion_x]=4
+    self.mapa[self.posicion_x+1]=0
+    self.mapa[self.posicion_x+2]=2
+    self.posicion_x += 1
+
+
+
+
+
+
+
+
+    
