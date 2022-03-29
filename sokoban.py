@@ -18,7 +18,7 @@ class Sokoban:
 
 #CREACION DEL MAPA DE JUEGO
     
-    mapa = [3,1,1,1,0,1,1,1,1,1,1,3] 
+    mapa = [3,1,1,1,0,1,1,2,1,1,4,3] 
     posicion_x = 4 #Posicion Inicial
 
     def __init__(self):
@@ -26,12 +26,20 @@ class Sokoban:
 
     def imprimirMapa(self):
         for i in self.mapa:
-            if i == 1:
-                print(" ", end = "")
-            elif i == 3: 
+            if i == 0: #Muñeco
+                print(chr(254), end = "")
+            elif i == 1: #Espacio
+                print (" ",end = "")
+            elif i == 2: #Cajas
+                print(chr(164),end = "")
+            elif i == 3:  #Paredes
                 print (chr(220),end = "")
-            elif i == 0:
-                print (chr(254),end = "")
+            elif i == 4:  #Meta
+                print (chr(109),end = "")
+            elif i == 5:  #Muñeco_Meta
+                print (chr(80),end = "")
+            elif i == 6:  #Caja_Meta
+                print (chr(100),end = "")
             else:
                 print(i, end = "")
         print()
@@ -53,7 +61,7 @@ class Sokoban:
         
         # 1 Muñeco, meta
         self.mapa[self.posicion_x+1]==1
-        self.mapa[self.posicion_x]=4
+        self.mapa[self.posicion_x]=1
         self.mapa[self.posicion_x+1]=5
         self.posicion_x += 1
 
