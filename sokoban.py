@@ -32,7 +32,8 @@ class Sokoban:
             else:
                 print(i, end = "")
         print()
-         
+
+    #MOVIMIENTOS A LA DERECHA
     def moverDerecha(self):
         self.posicion_x += 1 #Calcula la nueva posicion del muñeco 
         self.mapa[self.posicion_x] = 0 #Coloca el muñeco en la nueva posicion 
@@ -50,10 +51,18 @@ class Sokoban:
         self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
         self.posicion.columna += 1
 
+        #2 Muñeco, caja, espacio
+        if self.mapa[self.posicion_x]==0 and self.mapa[self.posicion_x+1]==2 and self.mapa[self.posicion_x+2]==4:1
+        self.mapa[self.posicion_fila] [self.posicion_columna]=1
+        self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
+        self.posicion_x += 1
+        
+
 
 
         
 
+    #MOVIMIENTOS A LA IZQUIERDA
     def moverIzquierda(self):
         self.posicion_x -= 1
         self.mapa[self.posicion_x] = 0 
@@ -84,7 +93,6 @@ while True:
         self.mapa[self.posicion_fila] [self.posicion_columna]=1
         self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
         self.posicion.columna += 1
-
 
 
 
