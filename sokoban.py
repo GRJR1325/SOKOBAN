@@ -18,7 +18,7 @@ class Sokoban:
 
 #CREACION DEL MAPA DE JUEGO
     
-    mapa = [3,1,1,1,0,1,1,2,1,1,4,3] 
+    mapa = [3,1,1,1,1,0,1,1,4,1,1,1,3] 
     posicion_x = 4 #Posicion Inicial
 
     def __init__(self):
@@ -37,7 +37,7 @@ class Sokoban:
             elif i == 4:  #Meta
                 print (chr(109),end = "")
             elif i == 5:  #Muñeco_Meta
-                print (chr(80),end = "")
+                print (chr(78),end = "")
             elif i == 6:  #Caja_Meta
                 print (chr(100),end = "")
             else:
@@ -46,7 +46,7 @@ class Sokoban:
 
 #CONFIGURACION DE MOVIMIENTOS
         
-    #MOVIMIENTOS A LA DERECHA 
+    #MOVIMIENTOS A LA DERECHA --->
     def moverDerecha(self):
         self.posicion_x += 1 #Calcula la nueva posicion del muñeco 
         self.mapa[self.posicion_x] = 0 #Coloca el muñeco en la nueva posicion 
@@ -54,18 +54,32 @@ class Sokoban:
 
         #CONDICIONES--->
         # 0 Muñeco, espacio
-        self.mapa[self.posicion_x+1]==1
+        self.mapa[self.posicion_x+1]== 1
         self.mapa[self.posicion_x]=1
         self.mapa[self.posicion_x+1]=0
         self.posicion_x += 1
         
         # 1 Muñeco, meta
-        self.mapa[self.posicion_x+1]==1
+        self.mapa[self.posicion_x+1]== 4
         self.mapa[self.posicion_x]=1
         self.mapa[self.posicion_x+1]=5
         self.posicion_x += 1
 
-    #MOVIMIENTOS A LA IZQUIERDA
+        # 2 Muñeco, caja ,espacio
+        self.mapa[self.posicion_x] == 0 and self.mapa[self.posicion_x+1] == 2 and self.mapa[self.posicion_x+2]==1
+        self.mapa[self.posicion_x]=1
+        self.mapa[self.posicion_x+1]=0
+        self.mapa[self.posicion_x+2]=2
+        self.posicion_x += 1
+
+        # 3 Muñeco, caja, meta
+        self.mapa[self.posicion_x] == 0 and self.mapa[self.posicion_x+1] == 2 and self.mapa[self.posicion_x+2]==4
+        self.mapa[self.posicion_x]=1
+        self.mapa[self.posicion_x+1]=0
+        self.mapa[self.posicion_x+2]=6
+        self.posicion_x += 1    
+
+    #MOVIMIENTOS A LA IZQUIERDA <---
     def moverIzquierda(self):
         self.posicion_x -= 1
         self.mapa[self.posicion_x] = 0 
@@ -96,10 +110,7 @@ while True:
 
 #PRUEBAS 
         
-#2 Muñeco, caja ,espacio
-        self.mapa[self.posicion_fila] [self.posicion_columna]=1
-        self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
-        self.posicion.columna += 1
+
 
 
 
