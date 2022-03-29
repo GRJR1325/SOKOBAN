@@ -1,6 +1,6 @@
 
 class Sokoban:
- # Representación del componenente del juego
+ # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
  # 1 = Espacio
  # 2 = Cajas
@@ -9,12 +9,15 @@ class Sokoban:
  # 5 = Muñeco_meta
  # 6 = Caja_meta
     
- # Controles 
+ # Controles:
  # a = Izquierda
  # d = Derecha
  # w = Arriba
  # s = Abajo
+ # q = Cerrar juego
 
+#CREACION DEL MAPA DE JUEGO
+    
     mapa = [3,1,1,1,0,1,1,1,1,1,1,3] 
     posicion_x = 4 #Posicion Inicial
 
@@ -32,35 +35,36 @@ class Sokoban:
             else:
                 print(i, end = "")
         print()
-         
+
+#CONFIGURACION DE MOVIMIENTOS
+        
+    #MOVIMIENTOS A LA DERECHA 
     def moverDerecha(self):
         self.posicion_x += 1 #Calcula la nueva posicion del muñeco 
         self.mapa[self.posicion_x] = 0 #Coloca el muñeco en la nueva posicion 
         self.mapa[self.posicion_x - 1] = 1 #Coloca el espacio donde va el muñeco
 
-        #Condiciones
-        
+        #CONDICIONES--->
         # 0 Muñeco, espacio
         self.mapa[self.posicion_x+1]==1
         self.mapa[self.posicion_x]=1
         self.mapa[self.posicion_x+1]=0
         self.posicion_x += 1
-            
+        
         # 1 Muñeco, meta
         self.mapa[self.posicion_x+1]==1
-        self.mapa[self.posicion_x]=1
-        self.mapa[self.posicion_x+1]=0
+        self.mapa[self.posicion_x]=4
+        self.mapa[self.posicion_x+1]=5
         self.posicion_x += 1
 
-
-
-        
-
+    #MOVIMIENTOS A LA IZQUIERDA
     def moverIzquierda(self):
         self.posicion_x -= 1
         self.mapa[self.posicion_x] = 0 
         self.mapa[self.posicion_x + 1] = 1
 
+        
+#EJECUCIÓN DEL JUEGO
 juego = Sokoban()
 
 juego.imprimirMapa()
@@ -82,6 +86,8 @@ while True:
         
         
 
+#PRUEBAS 
+        
 #2 Muñeco, caja ,espacio
         self.mapa[self.posicion_fila] [self.posicion_columna]=1
         self.mapa[self.posicion_fila] [self.posicion_columna+1]=0
