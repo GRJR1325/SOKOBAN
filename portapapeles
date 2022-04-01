@@ -27,3 +27,7 @@ if self.mapa[self.posicion_x]==5 and self.mapa[self.posicion_x+1]==2 and self.ma
         self.mapa[self.posicion_x+1]=0
         self.mapa[self.posicion_x+2]=6
         self.posicion_x += 1
+
+
+
+
