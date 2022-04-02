@@ -38,7 +38,7 @@ class Sokoban:
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 0, 1, 1, 1, 4, 1, 1, 3],
+            [3, 1, 1, 0, 1, 2, 1, 4, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
@@ -52,23 +52,23 @@ class Sokoban:
             print(fila)
             
        #for i in self.mapa:
-            #if i == 0: #Muñeco
-              #  print(chr(64), end = "")
-            #elif i == 1: #Espacio
-              #  print (" ",end = "")
-            #elif i == 2: #Cajas
-               # print(chr(164),end = "")
-            #elif i == 3:  #Paredes
+           # if i == 0: #Muñeco
+                #print(chr(64), end = "")
+           # elif i == 1: #Espacio
+                #print (" ",end = "")
+           # elif i == 2: #Cajas
+               #print(chr(164),end = "")
+           # elif i == 3:  #Paredes
                # print (chr(220),end = "")
-            #elif i == 4:  #Meta = m
-               # print (chr(109),end = "")
+           # elif i == 4:  #Meta = m
+              #  print (chr(109),end = "")
             #elif i == 5:  #Muñeco_Meta = N
-              #  print (chr(78),end = "")
-            #elif i == 6:  #Caja_Meta
-               # print (chr(100),end = "")
-            #else:
-                #print(i, end = "")
-        #print()
+                #print (chr(78),end = "")
+           # elif i == 6:  #Caja_Meta
+                #print (chr(100),end = "")
+           # else:
+               # print(i, end = "")
+       # print()
 
 
 
@@ -89,11 +89,21 @@ class Sokoban:
             self.posicion_columna += 1
 
          # 1 Personaje, meta  0,4 -> 1,5
-        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0   
         and self.mapa[self.posicion_fila][self.posicion_columna + 1] == 4):
 
             self.mapa[self.posicion_fila][self.posicion_columna] == 1
             self.mapa[self.posicion_fila][self.posicion_columna + 1] = 5
+            self.posicion_columna += 1
+            
+         # 2 Personaje, caja, espacio  0,2,1 -> 1,0,2
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila][self.posicion_columna + 1] == 2
+        and self.mapa[self.posicion_fila][self.posicion_columna + 2] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] == 1
+            self.mapa[self.posicion_fila][self.posicion_columna + 1] = 0
+            self.mapa[self.posicion_fila][self.posicion_columna + 1] == 2
             self.posicion_columna += 1
             
 
@@ -107,8 +117,9 @@ class Sokoban:
             #CONDICIONES--->
             self.mapa[self.posicion_fila][self.posicion_columna] = 1
             self.mapa[self.posicion_fila][self.posicion_columna -1 ] = 0
-            
             self.posicion_columna -= 1
+
+                
 #EJECUCIÓN DEL JUEGO
 
     def jugar(self):
