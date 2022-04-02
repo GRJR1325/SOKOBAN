@@ -1,4 +1,3 @@
-
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -17,33 +16,42 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
+
+    posicion = 0
+    espacio = 1
+    caja = 2
+    paredes = 3
+    meta = 4
+    posicion_meta = 5
+    caja_meta = 6
     
     mapa = []
     
-    posicion_fila = 4
-    posicion_columna = 4
+    posicion_fila = 0
+    posicion_columna = 0
     
     def __init__(self):
         pass
           
-    def leerMapa(self):
+    def leermapa(self):
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 0, 1, 2, 1, 4, 1, 1, 3],
+            [3, 1, 1, 0, 1, 1, 1, 4, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
         ]
-        self.posicion_fila = 4     #Posicion Inicial
-        self.posicion_columna = 4
+        self.posicion_fila = 3     #Posicion Inicial
+        self.posicion_columna = 3
 
     
-    def imprimirMapa(self):
+    def imprimirmapa(self):
         for fila in self.mapa:  # For each row in map
             print(fila)
-       # for i in self.mapa:
+            
+       #for i in self.mapa:
             #if i == 0: #Muñeco
               #  print(chr(64), end = "")
             #elif i == 1: #Espacio
@@ -72,42 +80,51 @@ class Sokoban:
 
 
         #CONDICIONES--->
-        if self.mapa[self.posicion_fila][self.posicion_columna] == 0 and self.mapa[self.posicion_fila][self.posicion_columna + 1] == 1: #Calcula la nueva posicion del muñeco
+        # 0 Personaje, espacio  0,1 -> 1,0
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 and 
+            self.mapa[self.posicion_fila][self.posicion_columna + 1] == 1): #Calcula la nueva posicion del muñeco
   
             self.mapa[self.posicion_fila][self.posicion_columna] = 1     
             self.mapa[self.posicion_fila][self.posicion_columna + 1] = 0
             self.posicion_columna += 1
 
-        
+         # 1 Personaje, meta  0,4 -> 1,5
         elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
         and self.mapa[self.posicion_fila][self.posicion_columna + 1] == 4):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] == 1
+            self.mapa[self.posicion_fila][self.posicion_columna + 1] = 5
+            self.posicion_columna += 1
             
 
 #MOVIMIENTOS A LA IZQUIERDA <---
     def moverIzquierda(self):
-        if self.mapa[self.posicion_fila][self.posicion_columna] == 0 and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 1: #Calcula la nueva posicion del muñeco
+        print("Mover Izquierda")
+        
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 and 
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] == 1): #Calcula la nueva posicion del muñeco
 
             #CONDICIONES--->
             self.mapa[self.posicion_fila][self.posicion_columna] = 1
             self.mapa[self.posicion_fila][self.posicion_columna -1 ] = 0
             
             self.posicion_columna -= 1
-
-
-        
 #EJECUCIÓN DEL JUEGO
 
     def jugar(self):
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
         print(instrucciones)
-        self.leerMapa()
+        self.leermapa()
         while True:
-            self .imprimirMapa()
+            self.imprimirmapa()
             movimiento = input("Mover hacia:")
+            
             if movimiento == "d":
                 self.moverDerecha()
+                
             elif movimiento == "a":
                 self.moverIzquierda()
+                
             elif movimiento == "q":
                 print("Salir del juego")
                 break
