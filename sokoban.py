@@ -458,6 +458,39 @@ class Sokoban:
             self.mapa[self.posicion_fila + 2][self.posicion_columna] = 2
             self.posicion_fila += 1    
 
+        # 3 Personaje, caja, meta 0,2,4 -> 1,0,6
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1][self.posicion_columna] == 2
+        and self.mapa[self.posicion_fila + 2][self.posicion_columna] == 4):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 0
+            self.mapa[self.posicion_fila + 2][self.posicion_columna] = 6
+            self.posicion_fila += 1   
+
+        # 4 Personaje, caja_meta, meta 0,6,1 -> 1,5,2
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1][self.posicion_columna] == 6
+        and self.mapa[self.posicion_fila + 2][self.posicion_columna] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 5
+            self.mapa[self.posicion_fila + 2][self.posicion_columna] = 2
+            self.posicion_fila += 1                   
+
+        # 5 Personaje, caja_meta, meta 0,6,4 -> 1,5,6
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1][self.posicion_columna] == 6 
+        and self.mapa[self.posicion_fila + 2][self.posicion_columna] == 4):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 5 
+            self.mapa[self.posicion_fila + 2][self.posicion_columna] = 6
+            self.posicion_fila += 1                   
+
+            
+
+
             
 #EJECUCIÓN DEL JUEGO
             
