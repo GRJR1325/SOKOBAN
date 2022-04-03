@@ -370,7 +370,35 @@ class Sokoban:
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
             self.mapa[self.posicion_fila - 2][self.posicion_columna] = 6
             self.posicion_fila -= 1   
-  
+
+        # 6 Espacio, personaje_meta 1,5 -> 0,4
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1): 
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
+            self.posicion_fila -= 1
+
+        # 7 Meta, personaje_meta 4,5 -> 5,4
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 4): 
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
+            self.posicion_fila -= 1            
+
+        # 8 Espacio, caja , personaje_meta 1,2,5 -> 2,0,4
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
+        and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 2
+            self.posicion_fila -= 1    
+
+
+
         
 #EJECUCIÓN DEL JUEGO
 
