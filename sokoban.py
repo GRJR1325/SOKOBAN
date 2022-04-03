@@ -38,8 +38,8 @@ class Sokoban:
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 3],
-            [3, 1, 1, 4, 1, 0, 1, 2, 4, 1, 3],
+            [3, 1, 4, 1, 1, 4, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
@@ -316,22 +316,22 @@ class Sokoban:
         #CONDICIONES ^
         # 0 Espacio, personaje  1,0 -> 0,1
         if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 
-        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1 ): 
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1): 
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 1
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
             self.posicion_fila -= 1
 
         # 1 Meta, personaje 4,0 -> 5,1
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
-        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 4 ): 
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 4): 
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 1
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
             self.posicion_fila -= 1
 
         # 2 Espacio, caja, personaje 1,2,0 -> 2,0,1
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
 
@@ -341,7 +341,7 @@ class Sokoban:
             self.posicion_fila -= 1           
 
         # 3 Meta, caja, personaje 4,2,0 -> 6,0,1
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
 
@@ -352,7 +352,7 @@ class Sokoban:
 
         # 4 Espacio, caja_meta 1,6,0 -> 2,5,1
 
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
 
@@ -362,7 +362,7 @@ class Sokoban:
             self.posicion_fila -= 1   
 
         # 5 Meta, caja_meta, personaje 4,6,0 -> 6,5,1
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
 
@@ -372,15 +372,15 @@ class Sokoban:
             self.posicion_fila -= 1   
 
         # 6 Espacio, personaje_meta 1,5 -> 0,4
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
-        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1): 
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 1): 
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 4
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
             self.posicion_fila -= 1
 
         # 7 Meta, personaje_meta 4,5 -> 5,4
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
         and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 4): 
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 4
@@ -388,7 +388,7 @@ class Sokoban:
             self.posicion_fila -= 1            
 
         # 8 Espacio, caja , personaje_meta 1,2,5 -> 2,0,4
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
 
@@ -398,7 +398,7 @@ class Sokoban:
             self.posicion_fila -= 1    
 
         # 9 Meta, caja, personaje_meta 4,2,5 -> 6,0,4
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
 
@@ -408,7 +408,7 @@ class Sokoban:
             self.posicion_fila -= 1    
 
         # 10 Espacio, caja_meta, personaje_meta 4,6,5 -> 6,5,4 
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
 
@@ -418,13 +418,13 @@ class Sokoban:
             self.posicion_fila -= 1    
 
         # 11 Meta, caja_meta, personaje_meta 1,6,5 -> 2,5,4
-        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5
         and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
         and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 4
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
-            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 2
             self.posicion_fila -= 1       
 
 
@@ -448,6 +448,9 @@ class Sokoban:
 
             elif movimiento == "w":
                 self.moverArriba()
+
+            elif movimiento == "s":
+                self.moverAbajo()
                 
             elif movimiento == "q":
                 print("Salir del juego")
