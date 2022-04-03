@@ -309,7 +309,21 @@ class Sokoban:
             self.mapa[self.posicion_fila][self.posicion_columna - 2] = 2
             self.posicion_columna -= 1
   
-                
+#MOVIMIENTOS ARRIBA ^
+    def moverArriba(self):
+        print("Mover Arriba")
+
+        #CONDICIONES ^
+        # 0 Espacio, personaje  1,0 -> 0,1
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1 ): #Calcula la nueva posicion del muñeco
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
+            self.posicion_fila -= 1
+
+
+        
 #EJECUCIÓN DEL JUEGO
 
     def jugar(self):
@@ -325,6 +339,9 @@ class Sokoban:
                 
             elif movimiento == "a":
                 self.moverIzquierda()
+
+            elif movimiento == "w":
+                self.moverArriba()
                 
             elif movimiento == "q":
                 print("Salir del juego")
