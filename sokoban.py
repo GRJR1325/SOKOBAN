@@ -38,10 +38,10 @@ class Sokoban:
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 4, 1, 1, 4, 1, 1, 1, 1, 3],
+            [3, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 2, 1, 4, 1, 1, 3],
+            [3, 1, 1, 1, 1, 1, 1, 4, 1, 1, 3],
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
         ]
         self.posicion_fila = 3     #Posicion Inicial
@@ -54,7 +54,7 @@ class Sokoban:
             
        #for i in self.mapa:
            # if i == 0: #Muñeco
-                #print(chr(64), end = "")
+                #print(chr(64), end = "")B
            # elif i == 1: #Espacio
                 #print (" ",end = "")
            # elif i == 2: #Cajas
@@ -427,6 +427,36 @@ class Sokoban:
             self.mapa[self.posicion_fila - 2][self.posicion_columna] = 2
             self.posicion_fila -= 1       
 
+    def moverAbajo(self):
+        print("Mover Abajo")
+
+        #CONDICIONES ^
+        
+        # 0 Personaje, espacio 0,1 -> 1,0
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1] [self.posicion_columna] == 1 ): 
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 0
+            self.posicion_fila += 1        
+
+        # 1 Personaje, meta 0,4 -> 1,5
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1] [self.posicion_columna] == 4 ): 
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 5
+            self.posicion_fila += 1       
+
+        # 2 Personaje, caja, espacio 0,2,1 -> 1,0,2
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila + 1][self.posicion_columna] == 2
+        and self.mapa[self.posicion_fila + 2][self.posicion_columna] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila + 1][self.posicion_columna] = 0
+            self.mapa[self.posicion_fila + 2][self.posicion_columna] = 2
+            self.posicion_fila += 1    
 
             
 #EJECUCIÓN DEL JUEGO
