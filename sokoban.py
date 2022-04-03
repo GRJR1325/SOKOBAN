@@ -38,7 +38,7 @@ class Sokoban:
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 3],
             [3, 1, 1, 4, 1, 0, 1, 2, 4, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
@@ -316,13 +316,64 @@ class Sokoban:
         #CONDICIONES ^
         # 0 Espacio, personaje  1,0 -> 0,1
         if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 
-        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1 ): #Calcula la nueva posicion del muñeco
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 1 ): 
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 1
             self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
             self.posicion_fila -= 1
 
+        # 1 Meta, personaje 4,0 -> 5,1
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila - 1] [self.posicion_columna] == 4 ): 
 
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
+            self.posicion_fila -= 1
+
+        # 2 Espacio, caja, personaje 1,2,0 -> 2,0,1
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 0
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
+        and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 1
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 2
+            self.posicion_fila -= 1           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         
 #EJECUCIÓN DEL JUEGO
 
