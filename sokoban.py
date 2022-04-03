@@ -397,10 +397,40 @@ class Sokoban:
             self.mapa[self.posicion_fila - 2][self.posicion_columna] = 2
             self.posicion_fila -= 1    
 
+        # 9 Meta, caja, personaje_meta 4,2,5 -> 6,0,4
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 2
+        and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 0
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 6
+            self.posicion_fila -= 1    
+
+        # 10 Espacio, caja_meta, personaje_meta 4,6,5 -> 6,5,4 
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
+        and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 4):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 6
+            self.posicion_fila -= 1    
+
+        # 11 Meta, caja_meta, personaje_meta 1,6,5 -> 2,5,4
+        if (self.mapa[self.posicion_fila][self.posicion_columna] == 5
+        and self.mapa[self.posicion_fila - 1][self.posicion_columna] == 6
+        and self.mapa[self.posicion_fila - 2][self.posicion_columna] == 1):
+
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila - 1][self.posicion_columna] = 5
+            self.mapa[self.posicion_fila - 2][self.posicion_columna] = 1
+            self.posicion_fila -= 1       
 
 
-        
+            
 #EJECUCIÓN DEL JUEGO
+            
 
     def jugar(self):
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
