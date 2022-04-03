@@ -267,8 +267,57 @@ class Sokoban:
             self.mapa[self.posicion_fila][self.posicion_columna] = 5
             self.mapa[self.posicion_fila][self.posicion_columna - 1] = 4 
             self.posicion_columna -= 1 
-        
 
+         # 8 Personaje_meta, caja, espacio 1,2,5 -> 2,0,4
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 1
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 2
+        and self.mapa[self.posicion_fila][self.posicion_columna - 2] == 5):
+            
+            self.mapa[self.posicion_fila][self.posicion_columna] = 2
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 0
+            self.mapa[self.posicion_fila][self.posicion_columna - 2] = 4
+            self.posicion_columna -= 1
+
+        # 9 Personaje_meta, caja, meta 4,2,5 -> 6,0,4
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 4
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 2 
+        and self.mapa[self.posicion_fila][self.posicion_columna - 2] == 5):
+            
+            self.mapa[self.posicion_fila][self.posicion_columna] = 6
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 0
+            self.mapa[self.posicion_fila][self.posicion_columna - 2] = 4
+            self.posicion_columna -= 1
+
+         # 10 Personaje_meta, caja_meta, espacio 4,6,5 -> 6,5,4
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 4
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 6
+        and self.mapa[self.posicion_fila][self.posicion_columna - 2] == 5):
+            
+            self.mapa[self.posicion_fila][self.posicion_columna] = 6
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 5
+            self.mapa[self.posicion_fila][self.posicion_columna - 2] = 4
+            self.posicion_columna -= 1
+
+         # 11 Personaje_meta, caja_meta, meta 1,6,5 -> 2,5,4
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 1
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 6 
+        and self.mapa[self.posicion_fila][self.posicion_columna - 2] == 5):
+            
+            self.mapa[self.posicion_fila][self.posicion_columna] = 2
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 5
+            self.mapa[self.posicion_fila][self.posicion_columna - 2] = 4
+            self.posicion_columna -= 1
+
+            
+         # 
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] ==  
+        and self.mapa[self.posicion_fila][self.posicion_columna - 2] == ):
+            
+            self.mapa[self.posicion_fila][self.posicion_columna] = 
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 
+            self.mapa[self.posicion_fila][self.posicion_columna - 2] = 
+            self.posicion_columna -= 1
 
                 
                 
