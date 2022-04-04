@@ -42,3 +42,33 @@ if self.mapa[self.posicion_x]==5 and self.mapa[self.posicion_x+1]==2 and self.ma
         self.posicion_columna = 5
 
 
+
+
+
+
+
+
+    def nivelcompleto(self):
+
+        while True:
+            
+        for fila in range(len(self.mapa)):
+            for columna in range(len(self.mapa[fila])):
+                
+    
+    """_summary_: Check if level is complete
+    Returns:
+    complete(bool): Return if level is complete or not
+    """
+    # TODO: Check if the level is complete
+    # If return True, the level is complete
+    # If return False, the level is not complete
+    complete = False
+    return complete
+
+
+        for fila in range(len(self.mapa)):  # Get rows number on the map
+            for columna in range(len(self.mapa[fila])):  # Get columns number on the map
+                if self.mapa[fila][columna] == 0:  # If the character is found
+                   self.posicion_fila = fila  # Update the character row position
+                   self.posicion_columna = columna 

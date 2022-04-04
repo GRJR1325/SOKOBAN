@@ -30,6 +30,9 @@ class Sokoban:
     
     posicion_fila = 0
     posicion_columna = 0
+
+    posicion_meta = 0
+
     
     def __init__(self):
         pass
@@ -38,10 +41,10 @@ class Sokoban:
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 2, 1, 4, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 4, 1, 1, 3],
+            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
+            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
         ]
 
@@ -555,6 +558,8 @@ class Sokoban:
 
 
 
+    
+
             
     def jugar(self):
         
@@ -565,9 +570,14 @@ class Sokoban:
         print(instrucciones)
         
         while True:
-            self.imprimirmapa()
+            self.EncontrarPosicion()  # Update the character position for new map  
+            self.imprimirmapa()   
+            print(
+                "Personaje posicion: [{},{}]".format(
+                    self.posicion_fila, self.posicion_columna
+                )
+            )
             movimiento = input("Mover hacia:")
-            
             if movimiento == "d":
                 self.moverDerecha()
                 
@@ -579,7 +589,7 @@ class Sokoban:
 
             elif movimiento == "s":
                 self.moverAbajo()
-                
+            
             elif movimiento == "q":
                 print("Salir del juego")
                 break
