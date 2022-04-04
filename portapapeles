@@ -28,6 +28,17 @@ if self.mapa[self.posicion_x]==5 and self.mapa[self.posicion_x+1]==2 and self.ma
         self.mapa[self.posicion_x+2]=6
         self.posicion_x += 1
 
-
+    def leermapa(self):
+        self.mapa = [
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 2, 1, 4, 1, 1, 3],
+            [3, 1, 1, 1, 1, 1, 1, 4, 1, 1, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+        ]
+        self.posicion_fila = 3     #Posicion Inicial
+        self.posicion_columna = 5
 
 

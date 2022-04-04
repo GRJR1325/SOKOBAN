@@ -44,10 +44,7 @@ class Sokoban:
             [3, 1, 1, 1, 1, 1, 1, 4, 1, 1, 3],
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
         ]
-        self.posicion_fila = 3     #Posicion Inicial
-        self.posicion_columna = 5
 
-    
     def imprimirmapa(self):
         for fila in self.mapa:  # For each row in map
             print(fila)
@@ -71,6 +68,12 @@ class Sokoban:
                # print(i, end = "")
        # print()
 
+    def EncontrarPosicion(self):
+        for fila in range(len(self.mapa)):  # Get rows number on the map
+            for columna in range(len(self.mapa[fila])):  # Get columns number on the map
+                if self.mapa[fila][columna] == 0:  # If the character is found
+                   self.posicion_fila = fila  # Update the character row position
+                   self.posicion_columna = columna  # Update the character col position
 
 
 #CONFIGURACION DE MOVIMIENTOS
@@ -544,14 +547,23 @@ class Sokoban:
             self.mapa[self.posicion_fila + 2][self.posicion_columna] = 2
             self.posicion_fila += 1                
 
-            
-#EJECUCIÓN DEL JUEGO
-            
 
+
+
+            
+#EJECUCIÓN DEL JUEGO    
+
+
+
+            
     def jugar(self):
+        
+        self.leermapa()
+        self.EncontrarPosicion() 
+        
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
         print(instrucciones)
-        self.leermapa()
+        
         while True:
             self.imprimirmapa()
             movimiento = input("Mover hacia:")
@@ -574,3 +586,5 @@ class Sokoban:
                     
 juego = Sokoban()
 juego.jugar()
+
+
