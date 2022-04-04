@@ -72,3 +72,26 @@ if self.mapa[self.posicion_x]==5 and self.mapa[self.posicion_x+1]==2 and self.ma
                 if self.mapa[fila][columna] == 0:  # If the character is found
                    self.posicion_fila = fila  # Update the character row position
                    self.posicion_columna = columna 
+
+
+
+    def imprimirmapa(self):
+        for fila in self.mapa: 
+            for columna in fila# For each row in map
+                if columna == 0: #Muñeco
+                    print(chr(64), end = "")B
+                elif columna == 1: #Espacio
+                    print (" ",end = "")
+                elif columna == 2: #Cajas
+                    print(chr(164),end = "")
+                elif columna == 3:  #Paredes
+                    print (chr(220),end = "")
+                elif columna == 4:  #Meta = m
+                    print (chr(109),end = "")
+                elif columna == 5:  #Muñeco_Meta = N
+                    print (chr(78),end = "")
+                elif columna == 6:  #Caja_Meta
+                    print (chr(100),end = "")
+                else:
+                    print(columna, end = "")
+            print()

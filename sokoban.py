@@ -1,3 +1,5 @@
+file = open('Nvl1.txt','r')
+
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -16,59 +18,37 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
-
-    posicion = 0
-    espacio = 1
-    caja = 2
-    paredes = 3
-    meta = 4
-    
-    posicion_meta = 5
-    caja_meta = 6
-
-    complete = False
-    
-    mapa = []
-    
     posicion_fila = 0
     posicion_columna = 0
-    
+
+    mapa = file 
+   
     def __init__(self):
         pass
           
     def leermapa(self):
-        self.mapa = [
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-        ]
+        self.mapa = [ ]
 
     def imprimirmapa(self):
-        for fila in self.mapa:  # For each row in map
-            print(fila)
-            
-       #for i in self.mapa:
-           # if i == 0: #Muñeco
-                #print(chr(64), end = "")B
-           # elif i == 1: #Espacio
-                #print (" ",end = "")
-           # elif i == 2: #Cajas
-               #print(chr(164),end = "")
-           # elif i == 3:  #Paredes
-               # print (chr(220),end = "")
-           # elif i == 4:  #Meta = m
-              #  print (chr(109),end = "")
-            #elif i == 5:  #Muñeco_Meta = N
-                #print (chr(78),end = "")
-           # elif i == 6:  #Caja_Meta
-                #print (chr(100),end = "")
-           # else:
-               # print(i, end = "")
-       # print()
+        for fila in self.mapa: 
+            for columna in fila# For each row in map
+                if columna == 0: #Muñeco
+                    print(chr(64), end = "")B
+                elif columna == 1: #Espacio
+                    print (" ",end = "")
+                elif columna == 2: #Cajas
+                    print(chr(164),end = "")
+                elif columna == 3:  #Paredes
+                    print (chr(220),end = "")
+                elif columna == 4:  #Meta = m
+                    print (chr(109),end = "")
+                elif columna == 5:  #Muñeco_Meta = N
+                    print (chr(78),end = "")
+                elif columna == 6:  #Caja_Meta
+                    print (chr(100),end = "")
+                else:
+                    print(columna, end = "")
+            print()
 
     def EncontrarPosicion(self):
         for fila in range(len(self.mapa)):  # Get rows number on the map
@@ -567,9 +547,7 @@ class Sokoban:
                 if self.mapa[fila][columna] == 4:
                     print("a")
 
-                           
-               
-
+    
     def jugar(self):
         self.leermapa()
         self.EncontrarPosicion() 
