@@ -25,14 +25,13 @@ class Sokoban:
     
     posicion_meta = 5
     caja_meta = 6
+
+    complete = False
     
     mapa = []
     
     posicion_fila = 0
     posicion_columna = 0
-
-    posicion_meta = 0
-
     
     def __init__(self):
         pass
@@ -41,7 +40,7 @@ class Sokoban:
         self.mapa = [
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3],
+            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
             [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
@@ -561,8 +560,17 @@ class Sokoban:
     
 
             
+    
+    def nivelcompleto(self):
+        for fila in range(len(self.mapa)):
+            for columna in range(len(self.mapa)):
+                if self.mapa[fila][columna] == 4:
+                    print("a")
+
+                           
+               
+
     def jugar(self):
-        
         self.leermapa()
         self.EncontrarPosicion() 
         
@@ -570,6 +578,10 @@ class Sokoban:
         print(instrucciones)
         
         while True:
+            self.nivelcompleto()
+            print("nivel") # If the level is complete
+                
+                
             self.EncontrarPosicion()  # Update the character position for new map  
             self.imprimirmapa()   
             print(
