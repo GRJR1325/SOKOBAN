@@ -16,23 +16,10 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
-
-    posicion = 0
-    espacio = 1
-    caja = 2
-    paredes = 3
-    meta = 4
-    
-    posicion_meta = 5
-    caja_meta = 6
-    
     mapa = []
-    
+
     posicion_fila = 0
     posicion_columna = 0
-
-    posicion_meta = 0
-
     
     def __init__(self):
         pass
@@ -52,29 +39,38 @@ class Sokoban:
         for fila in self.mapa: 
             for columna in fila: # For each row in map
                 if columna == 0: #Muñeco
-                    print(chr(128522), end = "")
+                    print(chr(64), end = "")
                 elif columna == 1: #Espacio
                     print (" ",end = "")
                 elif columna == 2: #Cajas
-                    print(chr(128230),end = "")
+                    print(chr(67),end = "")
                 elif columna == 3:  #Paredes
-                    print (chr(129521),end = "")
+                    print (chr(79),end = "")
                 elif columna == 4:  #Meta = m
-                    print (chr(128681),end = "")
+                    print (chr(109),end = "")
                 elif columna == 5:  #Muñeco_Meta = N
-                    print (chr(128515),end = "")
+                    print (chr(110),end = "")
                 elif columna == 6:  #Caja_Meta
-                    print (chr(127873),end = "")
+                    print (chr(43),end = "")
                 else:
                     print(columna, end = "")
             print()
 
+#ENCONTRAR LA POSICION DEL PERSONAJE
     def EncontrarPosicion(self):
         for fila in range(len(self.mapa)):  # Get rows number on the map
             for columna in range(len(self.mapa[fila])):  # Get columns number on the map
                 if self.mapa[fila][columna] == 0:  # If the character is found
                    self.posicion_fila = fila  # Update the character row position
                    self.posicion_columna = columna  # Update the character col position
+
+#NIVEL COMPLETADO
+    def completado(self):
+        for columna in self.mapa:
+            for cell in columna:
+                if cell == 'C':
+                    return False
+        return True                      
 
 
 #CONFIGURACION DE MOVIMIENTOS
@@ -560,7 +556,8 @@ class Sokoban:
 
             
     def jugar(self):
-        
+
+#ENCONTRAR LA POSICION
         self.leermapa()
         self.EncontrarPosicion() 
         
@@ -568,6 +565,9 @@ class Sokoban:
         print(instrucciones)
         
         while True:
+            if juego.completado():
+                print("acabado")
+    
             self.EncontrarPosicion()  # Update the character position for new map  
             self.imprimirmapa()   
             print(
