@@ -15,25 +15,27 @@ class Sokoban:
  # s = Abajo
  # q = Cerrar juego
 
-#CREACION DEL MAPA DE JUEGO
-
+ #CREACION DEL MAPA DE JUEGO 
+    
     mapa = []
 
     posicion_fila = 0
     posicion_columna = 0
+
+    f = open ('nivel1.txt','r')  # ABRELO
+    leer = f.read()  # LEELO
+    imp = print(leer)  # IMPRIMELO
+    #f.close() 
+
     
     def __init__(self):
         pass
           
     def leermapa(self):
-        f = open ('nivel1.txt','r')
-        m = f.read()
-        print(m)
-        f.close()
-        
-        self.mapa = m
+ # CIERRALO        
+        self.mapa = imp
+
     
-        
     def imprimirmapa(self):
         for fila in self.mapa: 
             for columna in fila: # For each row in map
