@@ -1,10 +1,5 @@
-f = open ('NIVEL 2.txt','r')
-mensaje = f.read()
-print(mensaje)
-f.close()
-
 class Sokoban:
- # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
+ # REPRESENTACIÓN DEL COMPONENTE DEL JUEGo
  # 0 = Muñeco
  # 1 = Espacio
  # 2 = Cajas
@@ -21,7 +16,8 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
-    mapa = f
+
+    mapa = []
 
     posicion_fila = 0
     posicion_columna = 0
@@ -30,7 +26,13 @@ class Sokoban:
         pass
           
     def leermapa(self):
-        self.mapa = []
+        f = open ('nivel1.txt','r')
+        m = f.read()
+        print(m)
+        f.close()
+        
+        self.mapa = m
+    
         
     def imprimirmapa(self):
         for fila in self.mapa: 
@@ -55,12 +57,15 @@ class Sokoban:
 
 #ENCONTRAR LA POSICION DEL PERSONAJE
     def EncontrarPosicion(self):
-        for fila in range(len(self.mapa)):  # Get rows number on the map
+        print("encontrar posicion")
+        print (self.mapa)
+        for fila in range(len(self.mapa)):# Get rows number on the map
             for columna in range(len(self.mapa[fila])):  # Get columns number on the map
                 if self.mapa[fila][columna] == 0:  # If the character is found
-                   self.posicion_fila = fila  # Update the character row position
-                   self.posicion_columna = columna  # Update the character col position
-
+                    self.posicion_fila = fila  # Update the character row position
+                    self.posicion_columna = columna  # Update the character col position
+                    print(fila)
+                    print(columna)
 #NIVEL COMPLETADO
     #def completado(self):
         #for columna in self.mapa:
@@ -547,8 +552,7 @@ class Sokoban:
 #ENCONTRAR LA POSICION
         self.leermapa()
         self.EncontrarPosicion()
-        
-
+    
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
         print(instrucciones)
         
