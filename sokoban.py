@@ -1,6 +1,7 @@
-import numpy as op
-...
-archivo_nivel = op.genfromtxt(fname='Nvl1.txt')
+f = open ('NIVEL 2.txt','r')
+mensaje = f.read()
+print(mensaje)
+f.close()
 
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
@@ -20,7 +21,7 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
-    mapa = op.loadtxt('Nvl1.txt',dtype=int)
+    mapa = f
 
     posicion_fila = 0
     posicion_columna = 0
@@ -29,8 +30,8 @@ class Sokoban:
         pass
           
     def leermapa(self):
-        self.mapa = op.loadtxt('Nvl1.txt',dtype=int)
-
+        self.mapa = []
+        
     def imprimirmapa(self):
         for fila in self.mapa: 
             for columna in fila: # For each row in map
@@ -61,12 +62,12 @@ class Sokoban:
                    self.posicion_columna = columna  # Update the character col position
 
 #NIVEL COMPLETADO
-    def completado(self):
-        for columna in self.mapa:
-            for cell in columna:
-                if cell == '+':
-                    return False
-        return True                      
+    #def completado(self):
+        #for columna in self.mapa:
+            #for cell in columna:
+                #if cell == '+':
+                    #return False
+        #return True                      
 
 
 #CONFIGURACION DE MOVIMIENTOS
@@ -545,16 +546,17 @@ class Sokoban:
 
 #ENCONTRAR LA POSICION
         self.leermapa()
-        self.EncontrarPosicion() 
+        self.EncontrarPosicion()
         
+
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
         print(instrucciones)
         
         while True:
-            if juego.completado():
-                print("acabado")
-    
-            self.EncontrarPosicion()  # Update the character position for new map  
+              #if juego.completado():
+                #print("acabado")
+                
+     # Update the character position for new map  
             self.imprimirmapa()   
             print(
                 "Personaje posicion: [{},{}]".format(
@@ -580,5 +582,3 @@ class Sokoban:
                     
 juego = Sokoban()
 juego.jugar()
-
-
