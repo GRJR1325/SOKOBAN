@@ -1,3 +1,7 @@
+import numpy as op
+...
+archivo_nivel = op.genfromtxt(fname='Nvl1.txt')
+
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -16,7 +20,7 @@ class Sokoban:
  # q = Cerrar juego
 
 #CREACION DEL MAPA DE JUEGO
-    mapa = []
+    mapa = op.loadtxt('Nvl1.txt',dtype=int)
 
     posicion_fila = 0
     posicion_columna = 0
@@ -25,15 +29,7 @@ class Sokoban:
         pass
           
     def leermapa(self):
-        self.mapa = [
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
-            [3, 1, 1, 1, 1, 1, 2, 4, 1, 1, 3],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-        ]
+        self.mapa = op.loadtxt('Nvl1.txt',dtype=int)
 
     def imprimirmapa(self):
         for fila in self.mapa: 
@@ -68,7 +64,7 @@ class Sokoban:
     def completado(self):
         for columna in self.mapa:
             for cell in columna:
-                if cell == 'C':
+                if cell == '+':
                     return False
         return True                      
 
@@ -542,19 +538,9 @@ class Sokoban:
             self.mapa[self.posicion_fila][self.posicion_columna] = 4
             self.mapa[self.posicion_fila + 1][self.posicion_columna] = 5
             self.mapa[self.posicion_fila + 2][self.posicion_columna] = 2
-            self.posicion_fila += 1                
-
-
-
-
-            
+            self.posicion_fila += 1                  
 #EJECUCIÓN DEL JUEGO    
-
-
-
-    
-
-            
+   
     def jugar(self):
 
 #ENCONTRAR LA POSICION
