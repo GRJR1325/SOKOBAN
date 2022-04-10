@@ -1,5 +1,5 @@
 class Sokoban:
- # REPRESENTACIÓN DEL COMPONENTE DEL JUEGo
+ # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
  # 1 = Espacio
  # 2 = Cajas
@@ -8,33 +8,34 @@ class Sokoban:
  # 5 = Muñeco_meta
  # 6 = Caja_meta
     
- # Controles:
- # a = Izquierda
- # d = Derecha
- # w = Arriba
- # s = Abajo
- # q = Cerrar juego
-
- #CREACION DEL MAPA DE JUEGO 
-    
+#CREACION DEL MAPA DE JUEGO     
     mapa = []
-
     posicion_fila = 0
     posicion_columna = 0
-
-    f = open ('nivel1.txt','r')  # ABRELO
-    leer = f.read()  # LEELO
-    imp = print(leer)  # IMPRIMELO
-    #f.close() 
-
+    nivel = open ("nivel2.txt", "r")
     
     def __init__(self):
         pass
-          
-    def leermapa(self):
- # CIERRALO        
-        self.mapa = imp
+        print("Bienvenido a sokoban")
 
+
+
+        
+    def leermapa(self):# ABRELO
+        for rug in self.nivel:
+            linea = []
+            for digito in rug:
+                if digito == "\n":
+                    continue
+                linea.append(int(digito))
+            self.mapa.append(linea)
+
+        
+        #f = open ('nivel2.txt','r')
+        #mensaje = f.read()  # LEELO  
+        #print(mensaje)  # IMPRIMELO       
+        #f.close()  # CIERRALO  
+        #self.mapa = mensaje
     
     def imprimirmapa(self):
         for fila in self.mapa: 
@@ -58,16 +59,15 @@ class Sokoban:
             print()
 
 #ENCONTRAR LA POSICION DEL PERSONAJE
+            
     def EncontrarPosicion(self):
         print("encontrar posicion")
-        print (self.mapa)
         for fila in range(len(self.mapa)):# Get rows number on the map
             for columna in range(len(self.mapa[fila])):  # Get columns number on the map
                 if self.mapa[fila][columna] == 0:  # If the character is found
                     self.posicion_fila = fila  # Update the character row position
                     self.posicion_columna = columna  # Update the character col position
-                    print(fila)
-                    print(columna)
+                    
 #NIVEL COMPLETADO
     #def completado(self):
         #for columna in self.mapa:
@@ -559,10 +559,9 @@ class Sokoban:
         print(instrucciones)
         
         while True:
-              #if juego.completado():
-                #print("acabado")
-                
-     # Update the character position for new map  
+#if juego.completado():
+#print("acabado")
+# Update the character position for new map  
             self.imprimirmapa()   
             print(
                 "Personaje posicion: [{},{}]".format(
@@ -588,3 +587,6 @@ class Sokoban:
                     
 juego = Sokoban()
 juego.jugar()
+
+#video
+#URL del codigo
