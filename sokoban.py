@@ -12,23 +12,21 @@ class Sokoban:
     mapa = []
     posicion_fila = 0
     posicion_columna = 0
-    nivel = open ("nivel2.txt", "r")
+    terminado = False
+    nivel = open ("nivel1.txt", "r")
     
     def __init__(self):
         pass
         print("Bienvenido a sokoban")
-
-
-
         
-    def leermapa(self):# ABRELO
+    def leermapa(self): #ABRE NIVEL DESDE .TXT
         for rug in self.nivel:
-            linea = []
+            columna = []
             for digito in rug:
                 if digito == "\n":
                     continue
-                linea.append(int(digito))
-            self.mapa.append(linea)
+                columna.append(int(digito))
+            self.mapa.append(columna)
 
         
         #f = open ('nivel2.txt','r')
@@ -37,9 +35,9 @@ class Sokoban:
         #f.close()  # CIERRALO  
         #self.mapa = mensaje
     
-    def imprimirmapa(self):
+    def imprimirmapa(self): #CAMBIA NUMEROS POR CARACTERES
         for fila in self.mapa: 
-            for columna in fila: # For each row in map
+            for columna in fila: 
                 if columna == 0: #Muñeco
                     print(chr(64), end = "")
                 elif columna == 1: #Espacio
@@ -59,22 +57,36 @@ class Sokoban:
             print()
 
 #ENCONTRAR LA POSICION DEL PERSONAJE
-            
     def EncontrarPosicion(self):
-        print("encontrar posicion")
-        for fila in range(len(self.mapa)):# Get rows number on the map
-            for columna in range(len(self.mapa[fila])):  # Get columns number on the map
-                if self.mapa[fila][columna] == 0:  # If the character is found
-                    self.posicion_fila = fila  # Update the character row position
-                    self.posicion_columna = columna  # Update the character col position
+        for fila in range(len(self.mapa)):
+            for columna in range(len(self.mapa[fila])):  
+                if self.mapa[fila][columna] == 0:  
+                    self.posicion_fila = fila  
+                    self.posicion_columna = columna   
                     
 #NIVEL COMPLETADO
-    #def completado(self):
-        #for columna in self.mapa:
-            #for cell in columna:
-                #if cell == '+':
-                    #return False
-        #return True                      
+    def completado(self):
+
+
+        for columna in self.mapa:              
+            if self.mapa [columna] == 2:  
+                self.terminado = True
+            else:
+                pass
+                
+                #self.posicion_fila = fila  
+                #self.posicion_columna = columna   
+
+
+
+                
+
+#        cell = []
+#        for columna in self.mapa:
+#            for cell in columna:
+#                if cell == '+':
+#                    return False
+#        return True                      
 
 
 #CONFIGURACION DE MOVIMIENTOS
@@ -173,7 +185,7 @@ class Sokoban:
 
             self.mapa[self.posicion_fila][self.posicion_columna] = 4
             self.mapa[self.posicion_fila][self.posicion_columna + 1] = 0
-            self.mapa[self.posicion_fila][self.posicion_columna + 1] = 6
+            self.mapa[self.posicion_fila][self.posicion_columna + 2] = 6
             self.posicion_columna += 1
 
         # 10 Personaje_meta, caja, meta,espacio 5,6,4 -> 4,5,6
@@ -266,11 +278,11 @@ class Sokoban:
             self.posicion_columna -= 1   
 
         # 7 Personaje_meta, meta 4,5 -> 5,4 
-        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 4   
-        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 5):
+        elif (self.mapa[self.posicion_fila][self.posicion_columna] == 5   
+        and self.mapa[self.posicion_fila][self.posicion_columna - 1] == 4):
 
-            self.mapa[self.posicion_fila][self.posicion_columna] = 5
-            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 4 
+            self.mapa[self.posicion_fila][self.posicion_columna] = 4
+            self.mapa[self.posicion_fila][self.posicion_columna - 1] = 5 
             self.posicion_columna -= 1 
 
          # 8 Personaje_meta, caja, espacio 1,2,5 -> 2,0,4
@@ -554,20 +566,36 @@ class Sokoban:
 #ENCONTRAR LA POSICION
         self.leermapa()
         self.EncontrarPosicion()
+
+        #if juego.completado():
+                #print("acabado")
     
         instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
         print(instrucciones)
+
         
-        while True:
-#if juego.completado():
-#print("acabado")
-# Update the character position for new map  
-            self.imprimirmapa()   
+    while self.terminado == False:
+            print("terminado")
+
+
+
+            
+        while slef.terminado:
+            
+
+
+
+            
+            self.imprimirmapa()  
+
+            
             print(
                 "Personaje posicion: [{},{}]".format(
                     self.posicion_fila, self.posicion_columna
                 )
             )
+
+            
             movimiento = input("Mover hacia:")
             if movimiento == "d":
                 self.moverDerecha()
