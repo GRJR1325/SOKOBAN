@@ -1,5 +1,4 @@
 from os import system, name
-
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -15,7 +14,7 @@ class Sokoban:
     posicion_fila = 0
     posicion_columna = 0
     nivel = open ("nivel2.txt", "r")
-    nivel_actual = 0
+
     def __init__(self):
         pass
         
@@ -62,6 +61,11 @@ class Sokoban:
                 if self.mapa[fila][columna] == 0:  
                     self.posicion_fila = fila  
                     self.posicion_columna = columna   
+
+    def escogernivel(self):
+        if movimiento == "1":
+        self.moverDerecha()
+        self.borrarpantalla()
 
 #BORRAR LA PANTALLA
     def borrarpantalla(self):
@@ -509,6 +513,8 @@ class Sokoban:
                 print("Salir del juego")
             elif movimiento == "wwssadad":
                 print("Juego Terminado\ncreado por GRJR1325\nGRACIAS POR JUGAR")
+#            elif movimiento == "":
+#                print("Movimiento no valido")
                 break
             
             if self.terminado() == 0:
