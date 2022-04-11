@@ -1,6 +1,5 @@
 from os import system, name
 
-
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -19,7 +18,17 @@ class Sokoban:
 
     def __init__(self):
         pass
-        print("Bienvenido a sokoban")
+        print("************************************")
+        print("*                                  *")
+        print("*         Bienvenido a sokoban     *")
+        print("*                                  *")     
+        print("************************************")       
+
+    nombre = input("Inserta tu nombre viajero:")
+    print(f"Me alegro de conocerte, {nombre}")
+    
+       
+        
         
     def leermapa(self): #ABRE NIVEL DESDE .TXT
         for rug in self.nivel:
@@ -448,11 +457,10 @@ class Sokoban:
 #EJECUCIÓN DEL JUEGO    
    
     def jugar(self):
-#ENCONTRAR LA POSICION
-        self.leermapa()
-        self.EncontrarPosicion()
+        self.leermapa() # LEE EL .TXT
+        self.EncontrarPosicion() # ENCUENTRA EL PERSONAJE
     
-        instrucciones = "d-Derecha\na-Izquierda\nq-Cerrar Juego"
+        instrucciones = "Controles:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego"
         print(instrucciones)
         
         while True:
@@ -466,33 +474,23 @@ class Sokoban:
             if movimiento == "d":
                 self.moverDerecha()
                 self.borrarpantalla()
-                self.imprimirmapa
-                
             elif movimiento == "a":
                 self.moverIzquierda()
                 self.borrarpantalla()
-
             elif movimiento == "w":
                 self.moverArriba()
                 self.borrarpantalla()
-                self.imprimirmapa
-
             elif movimiento == "s":
                 self.moverAbajo()
-                self.borrarpantalla()
-                self.imprimirmapa
-            
+                self.borrarpantalla()            
             elif movimiento == "q":
                 print("Salir del juego")
                 break
-
-      
+                
             if self.terminado() == 0:
                 self.borrarpantalla
                 print("Nivel terminado")
-                
-                
-
+            
 juego = Sokoban()
 juego.jugar()
 
