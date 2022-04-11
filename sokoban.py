@@ -1,3 +1,6 @@
+from os import system, name
+
+
 class Sokoban:
  # REPRESENTACIÓN DEL COMPONENTE DEL JUEGO
  # 0 = Muñeco
@@ -55,15 +58,22 @@ class Sokoban:
                 if self.mapa[fila][columna] == 0:  
                     self.posicion_fila = fila  
                     self.posicion_columna = columna   
-                    
+
+#BORRAR LA PANTALLA
+    def borrarpantalla(self):
+        if name == "poo":
+            system ("cls")
+        else: 
+            system("clear")
+                            
 #NIVEL COMPLETADO
     def terminado(self):
-        cell = 0
+        cell=0
         for columna in self.mapa:
             for fila in columna:
                 if fila == 4:
                     cell += 1
-            return cell
+        return cell
             
 #CONFIGURACION DE MOVIMIENTOS
             
@@ -455,19 +465,34 @@ class Sokoban:
             movimiento = input("Mover hacia:")
             if movimiento == "d":
                 self.moverDerecha()
+                self.borrarpantalla()
+                self.imprimirmapa
                 
             elif movimiento == "a":
                 self.moverIzquierda()
+                self.borrarpantalla()
 
             elif movimiento == "w":
                 self.moverArriba()
+                self.borrarpantalla()
+                self.imprimirmapa
 
             elif movimiento == "s":
                 self.moverAbajo()
+                self.borrarpantalla()
+                self.imprimirmapa
             
             elif movimiento == "q":
                 print("Salir del juego")
                 break
+
+      
+            if self.terminado() == 0:
+                self.borrarpantalla
+                print("Nivel terminado")
+                
+                
+
 juego = Sokoban()
 juego.jugar()
 
