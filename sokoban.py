@@ -14,12 +14,10 @@ class Sokoban:
     mapa = []
     posicion_fila = 0
     posicion_columna = 0
-    nivel = open ("nivel1.txt", "r")
+    nivel = open ("nivel2.txt", "r")
     nivel_actual = 0
     def __init__(self):
         pass
-
-
         
     def leermapa(self): #ABRE NIVEL DESDE .TXT
         for rug in self.nivel:
@@ -34,19 +32,25 @@ class Sokoban:
         for fila in self.mapa: 
             for columna in fila: 
                 if columna == 0: #Muñeco
-                    print(chr(64), end = "")
+                    print(chr(128515), end = "")
+                    
                 elif columna == 1: #Espacio
-                    print (" ",end = "")
+                    print ("  ",end = "")
+                    
                 elif columna == 2: #Cajas
-                    print(chr(67),end = "")
+                    print(chr(128230),end = "")
+                    
                 elif columna == 3:  #Paredes
-                    print (chr(79),end = "")
-                elif columna == 4:  #Meta = m
-                    print (chr(109),end = "")
-                elif columna == 5:  #Muñeco_Meta = N
-                    print (chr(110),end = "")
+                    print (chr(129521),end = "")
+                    
+                elif columna == 4:  #Meta 
+                    print (chr(128681),end = "")
+                    
+                elif columna == 5:  #Muñeco_Meta 
+                    print (chr(128522),end = "")
+                    
                 elif columna == 6:  #Caja_Meta
-                    print (chr(43),end = "")
+                    print (chr(127873),end = "")
                 else:
                     print(columna, end = "")
             print()
@@ -456,28 +460,28 @@ class Sokoban:
         self.leermapa() # LEE EL .TXT
         self.EncontrarPosicion() # ENCUENTRA EL PERSONAJE
         
-        nombre = input("¿Cual es tu nombre viajero?:")
+#        nombre = input("¿Cual es tu nombre viajero?:")
         
-        print(" **************************************")
-        print("                                       ")
-        print(f"       Bienvenido a sokoban {nombre}     ")
-        print("                                       ")     
-        print(" **************************************")  
+#        print(" **************************************")
+#        print("                                       ")
+#        print(f"       Bienvenido a sokoban {nombre}     ")
+#        print("                                       ")     
+#        print(" **************************************")  
 
-        print(f"Tu objetivo es muy simple {nombre} coloca todas las cajas dentro de las metas")
-        nombre = input ()
+#        print(f"Tu objetivo es muy simple {nombre} coloca todas las cajas dentro de las metas")
+#        nombre = input ()
         
-        print(f"Para moverte {nombre} usa las siguientes teclas:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego")
-        nombre = input()
+ #       print(f"Para moverte {nombre} usa las siguientes teclas:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego")
+#        nombre = input()
         
-        print("Usa tu inteligencia para superar los retos que te esperan ;)")
+#        print("Usa tu inteligencia para superar los retos que te esperan ;)")
 
-        tecla = input("*Inserta f para iniciar tu aventura*:")
-        if tecla == "f":
-            self.borrarpantalla()
+#        tecla = input("*Inserta f para iniciar tu aventura*:")
+#        if tecla == "f":
+#            self.borrarpantalla()
         
-        nombre = input()
-        self.borrarpantalla()
+#        nombre = input()
+#        self.borrarpantalla()
         
         while True:
             self.imprimirmapa()  
@@ -504,7 +508,7 @@ class Sokoban:
             elif movimiento == "q":
                 print("Salir del juego")
             elif movimiento == "wwssadad":
-                print("Juego Terminado")
+                print("Juego Terminado\ncreado por GRJR1325\nGRACIAS POR JUGAR")
                 break
             
             if self.terminado() == 0:
