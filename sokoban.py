@@ -70,6 +70,8 @@ class Sokoban:
                 if fila == 2:
                     cell += 1
         return cell
+
+
             
 #CONFIGURACION DE MOVIMIENTOS
 #MOVIMIENTOS A LA DERECHA --->
@@ -447,27 +449,32 @@ class Sokoban:
         
         nombre = input("¿Cual es tu nombre viajero?:")
         
-        print(" **************************************")
-        print("                                       ")
-        print(f"       Bienvenido a sokoban {nombre}     ")
-        print("                                       ")     
-        print(" **************************************")  
+        print(chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521))
+        print("                                        ")
+        print(f"     Bienvenido a sokoban {nombre}     ")
+        print("                                        ")     
+        print(chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521),chr(129521))
 
         print(f"Tu objetivo es muy simple {nombre} coloca todas las cajas dentro de las metas")
-        nombre = input ()
+        input ()
         
         print(f"Para moverte {nombre} usa las siguientes teclas:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego")
-        nombre = input()
+        input()
+
+        print(f"Te deseo suerte {nombre}  ")
+        input ()
         
         print("Usa tu inteligencia para superar los retos que te esperan ;)")
+
+
 
         tecla = input("*Dos veces ENTER para iniciar tu aventura*:")
         if tecla == " ":
             self.borrarpantalla()
         
-        nombre = input()
+        input()
         self.borrarpantalla()
-        
+    
         while self.inicia == True:
             self.imprimirmapa()  
             print(
@@ -491,21 +498,28 @@ class Sokoban:
                 self.moverAbajo()
                 self.borrarpantalla()      
             elif movimiento == "wwssadad":
-                print("Juego Terminado\ncreado por GRJR1325\nGRACIAS POR JUGAR")
+                print(chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142))
+                print("                                        ")
+                print(f"Juego Terminado\n created by José Rolando \nGRACIAS POR JUGAR {nombre} ")
+                print("                                        ")
+                print(chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142),chr(128142))
                 break
             elif movimiento == "q":
-                print("Proceso Terminado")
+                print("Juego Cerrado")
                 break
             else:
                 self.borrarpantalla()
                 print("Tecla equivocada")
 
-                
             if self.terminado() == 0:
                 self.inicia = False
                 self.borrarpantalla
-                print("**** JUEGO TERMINADO GRACIAS POR JUGAR :) ****")
-                system.exit() #CIERRA EL PROGRAMA
+                print(chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873))
+                print("                                        ")
+                print("JUEGO TERMINADO GRACIAS POR JUGAR :) ")
+                print("                                        ")
+                print(chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873),chr(127873))
+                break
 
 juego = Sokoban()
 juego.jugar()
