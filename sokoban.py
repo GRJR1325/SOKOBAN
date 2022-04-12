@@ -13,12 +13,13 @@ class Sokoban:
     mapa = []
     posicion_fila = 0
     posicion_columna = 0
-    nivel = open ("nivel2.txt", "r")
+    inicia = True
+    nivel = open ("nivel3.txt", "r")
 
     def __init__(self):
-        pass
+        pass 
         
-    def leermapa(self): #ABRE NIVEL DESDE .TXT
+    def leermapa(self): 
         for rug in self.nivel:
             columna = []
             for digito in rug:
@@ -26,35 +27,28 @@ class Sokoban:
                     continue
                 columna.append(int(digito))
             self.mapa.append(columna)
-    
-    def imprimirmapa(self): #CAMBIA NUMEROS POR CARACTERES
+            
+    def imprimirmapa(self): 
         for fila in self.mapa: 
             for columna in fila: 
                 if columna == 0: #Muñeco
                     print(chr(128515), end = "")
-                    
                 elif columna == 1: #Espacio
-                    print ("  ",end = "")
-                    
+                    print ("  ",end = "")                   
                 elif columna == 2: #Cajas
-                    print(chr(128230),end = "")
-                    
+                    print(chr(128230),end = "")                    
                 elif columna == 3:  #Paredes
-                    print (chr(129521),end = "")
-                    
+                    print (chr(129521),end = "")                    
                 elif columna == 4:  #Meta 
-                    print (chr(128681),end = "")
-                    
+                    print (chr(128681),end = "")                    
                 elif columna == 5:  #Muñeco_Meta 
-                    print (chr(128522),end = "")
-                    
+                    print (chr(128522),end = "")                    
                 elif columna == 6:  #Caja_Meta
                     print (chr(127873),end = "")
                 else:
                     print(columna, end = "")
             print()
 
-#ENCONTRAR LA POSICION DEL PERSONAJE
     def EncontrarPosicion(self):
         for fila in range(len(self.mapa)):
             for columna in range(len(self.mapa[fila])):  
@@ -62,22 +56,11 @@ class Sokoban:
                     self.posicion_fila = fila  
                     self.posicion_columna = columna   
 
-    def escogernivel(self):
-        if movimiento == "1":
-        self.moverDerecha()
-        self.borrarpantalla()
-
-#BORRAR LA PANTALLA
     def borrarpantalla(self):
         if name == "poo":
             system ("cls")
         else: 
             system("clear")
-
-#RESET LEVEL
-#    def reiniciar(self): 
-
-
                             
 #NIVEL COMPLETADO
     def terminado(self):
@@ -89,11 +72,9 @@ class Sokoban:
         return cell
             
 #CONFIGURACION DE MOVIMIENTOS
-            
 #MOVIMIENTOS A LA DERECHA --->
     def moverDerecha(self):
         print("Mover derecha")
-
         #CONDICIONES--->
         # 0 Personaje, espacio  0,1 -> 1,0
         if (self.mapa[self.posicion_fila][self.posicion_columna] == 0 
@@ -464,33 +445,33 @@ class Sokoban:
         self.leermapa() # LEE EL .TXT
         self.EncontrarPosicion() # ENCUENTRA EL PERSONAJE
         
-#        nombre = input("¿Cual es tu nombre viajero?:")
+        nombre = input("¿Cual es tu nombre viajero?:")
         
-#        print(" **************************************")
-#        print("                                       ")
-#        print(f"       Bienvenido a sokoban {nombre}     ")
-#        print("                                       ")     
-#        print(" **************************************")  
+        print(" **************************************")
+        print("                                       ")
+        print(f"       Bienvenido a sokoban {nombre}     ")
+        print("                                       ")     
+        print(" **************************************")  
 
-#        print(f"Tu objetivo es muy simple {nombre} coloca todas las cajas dentro de las metas")
-#        nombre = input ()
+        print(f"Tu objetivo es muy simple {nombre} coloca todas las cajas dentro de las metas")
+        nombre = input ()
         
- #       print(f"Para moverte {nombre} usa las siguientes teclas:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego")
-#        nombre = input()
+        print(f"Para moverte {nombre} usa las siguientes teclas:\nd-Derecha\na-Izquierda\nw-Arriba\ns-Abajo\nq-Cerrar Juego")
+        nombre = input()
         
-#        print("Usa tu inteligencia para superar los retos que te esperan ;)")
+        print("Usa tu inteligencia para superar los retos que te esperan ;)")
 
-#        tecla = input("*Inserta f para iniciar tu aventura*:")
-#        if tecla == "f":
-#            self.borrarpantalla()
+        tecla = input("*Dos veces ENTER para iniciar tu aventura*:")
+        if tecla == " ":
+            self.borrarpantalla()
         
-#        nombre = input()
-#        self.borrarpantalla()
+        nombre = input()
+        self.borrarpantalla()
         
-        while True:
+        while self.inicia == True:
             self.imprimirmapa()  
             print(
-                "Personaje posicion: [{},{}]".format(
+                "Personaje posicion: [{},{}]".format(  #MUESTRA PERSONAJE
                     self.posicion_fila, self.posicion_columna
                 )
             )
@@ -508,22 +489,23 @@ class Sokoban:
                 self.borrarpantalla()
             elif movimiento == "s":
                 self.moverAbajo()
-                self.borrarpantalla()            
-            elif movimiento == "q":
-                print("Salir del juego")
+                self.borrarpantalla()      
             elif movimiento == "wwssadad":
                 print("Juego Terminado\ncreado por GRJR1325\nGRACIAS POR JUGAR")
-#            elif movimiento == "":
-#                print("Movimiento no valido")
                 break
-            
-            if self.terminado() == 0:
-                self.borrarpantalla
+            elif movimiento == "q":
+                print("Proceso Terminado")
+                break
+            else:
+                self.borrarpantalla()
+                print("Tecla equivocada")
+
                 
-                print("Nivel terminado")
-            
+            if self.terminado() == 0:
+                self.inicia = False
+                self.borrarpantalla
+                print("**** JUEGO TERMINADO GRACIAS POR JUGAR :) ****")
+                system.exit() #CIERRA EL PROGRAMA
+
 juego = Sokoban()
 juego.jugar()
-
-#video
-#URL del codigo
