@@ -486,8 +486,6 @@ class Sokoban:
             if movimiento == "d":
                 self.moverDerecha()
                 self.borrarpantalla()
-            elif movimiento == "r":
-                self.imprimirmapa()
             elif movimiento == "a":
                 self.moverIzquierda()
                 self.borrarpantalla()
